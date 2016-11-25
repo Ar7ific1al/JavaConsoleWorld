@@ -4,7 +4,7 @@ public class Tile
 {
 	public enum TileType
 	{
-		EMPTY(byCode(' ')), WALL(byCode('X')), INVALID(byCode('~')), ITEM(byCode('I'));
+		EMPTY(byCode(' ')), WALL(byCode('X')), INVALID(byCode('~')), ITEM(byCode('#')), PLAYER(byCode('S')),;
 
 		@SuppressWarnings("unused")
 		private final TileType type;
@@ -22,10 +22,13 @@ public class Tile
 					return EMPTY;
 				case 'X':
 					return WALL;
-				case 'I':
+				case '#':
 					return ITEM;
+				case 'S':
+					return PLAYER;
+				default:
+					return INVALID;
 			}
-			return INVALID;
 		}
 
 		@Override
@@ -60,6 +63,23 @@ public class Tile
 	public void setType(char c)
 	{
 		this.type = TileType.byCode(c);
+	}
+	
+	public char getRenderCode()
+	{
+		switch (type)
+		{
+			case EMPTY:
+				return ' ';
+			case WALL:
+				return 'X';
+			case ITEM:
+				return '#';
+			case PLAYER:
+				return 'O';
+			default:
+				return '~';
+		}
 	}
 
 }
