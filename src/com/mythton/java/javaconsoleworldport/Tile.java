@@ -34,7 +34,7 @@ public class Tile
 		@Override
 		public String toString()
 		{
-			switch (type)
+			switch (this)
 			{
 				case EMPTY:
 					return "empty";
@@ -42,6 +42,8 @@ public class Tile
 					return "wall";
 				case ITEM:
 					return "item";
+				case PLAYER:
+					return "player";
 				default:
 					return "invalid";
 			}

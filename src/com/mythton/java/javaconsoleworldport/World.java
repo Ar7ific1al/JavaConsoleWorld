@@ -70,11 +70,17 @@ public class World
 				try
 				{
 					Tile newTile = new Tile(mapList.get(y)[x]);
+					if (newTile.getType().toString().equalsIgnoreCase("player"))
+					{
+						playerX = (short) x;
+						playerY = (short) y;
+					}
 					map[x][y] = newTile;
 				}
 				catch (Exception e)
 				{
-					System.out.println("Error occurred in World constructor:\n\tX = " + x + ", Y = " + y);
+					e.printStackTrace();
+					//System.out.println("Error occurred in World constructor:\n\tX = " + x + ", Y = " + y);
 				}
 			}
 		}
